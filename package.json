@@ -1,0 +1,27 @@
+{
+  "name": "alexapackage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ResulticksInc/AlexaPackage.git"
+  },
+  "keywords": [
+    "AlexaPackages"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.12"
+  },
+  "bugs": {
+    "url": "https://github.com/ResulticksInc/AlexaPackage/issues"
+  },
+  "homepage": "https://github.com/ResulticksInc/AlexaPackage#readme"
+}
