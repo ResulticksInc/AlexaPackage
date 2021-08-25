@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 
 module.exports.makeResutlickApicall = () => {
 
-    return fetch(AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
+    return fetch(RUN_AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
         .then((res) => {
             return res.json()
         })
