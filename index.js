@@ -1,43 +1,43 @@
 const express = require('express');
 const fetch = require('node-fetch');
 
-// module.exports.makeResutlickApicall = () => {
-
-//     return fetch(AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
-//         .then((res) => {
-//             return res.json()
-//         })
-//         .then((json) => {
-//             console.log(JSON.stringify(json));            
-//             return json.message || json.Message
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             return "server error"
-//         })
-// }
-
 module.exports.makeResutlickApicall = () => {
 
-    return new Promise((resolve,reject) => {
-        return fetch(RUN_AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
+    return fetch(AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
         .then((res) => {
             return res.json()
         })
         .then((json) => {
-            console.log(JSON.stringify(json));  
-            resolve(json.message)          
-           // return json.message || json.Message
+            console.log(JSON.stringify(json));            
+            return json.message || json.Message
         })
         .catch(err => {
             console.log(err);
-            reject("server error")
-            //return "server error"
+            return "server error"
         })
-    })
+}
+
+// module.exports.makeResutlickApicall = () => {
+
+//     return new Promise((resolve,reject) => {
+//         return fetch(RUN_AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
+//         .then((res) => {
+//             return res.json()
+//         })
+//         .then((json) => {
+//             console.log(JSON.stringify(json));  
+//             resolve(json.message)          
+//            // return json.message || json.Message
+//         })
+//         .catch(err => {
+//             console.log(err);
+//             reject("server error")
+//             //return "server error"
+//         })
+//     })
 
    
-}
+// }
 
 const headers = {
 
