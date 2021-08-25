@@ -20,7 +20,7 @@ const fetch = require('node-fetch');
 module.exports.makeResutlickApicall = () => {
 
     return new Promise((resolve,reject) => {
-        return fetch(AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
+        return fetch(RUN_AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
         .then((res) => {
             return res.json()
         })
@@ -50,7 +50,7 @@ const headers = {
 
 const akvParams = {
 
-    "appId": "18d526d9-de3c-41d3-b623-d7fc47f88335",
+    "appId": RUN_APP_ID,
     "mobileNetworkOperator": "Jio",
     "networkType": "",
     "packageName": "com.resulticks.visionbank",
@@ -84,4 +84,11 @@ const akvParams = {
 }
 
 const POST_METHOD = "POST"
-const AKV_URL = "https://teamsdk.resulticks.net/home/apiKeyValidation"
+//Team
+const TEAM_AKV_URL = "https://teamsdk.resulticks.net/home/apiKeyValidation"
+const TEAM_APP_ID = "18d526d9-de3c-41d3-b623-d7fc47f88335"
+
+
+//RUN
+const RUN_AKV_URL = "https://mobis.resu.io/home/sdkRegistration"
+const RUN_APP_ID = "6036e22e-4a43-40e1-ba90-b6000917dc45"
