@@ -1,13 +1,9 @@
-
+const express = require('express');
 const fetch = require('node-fetch');
 
+module.exports.makeResutlickApicall = () => {
 
-export default class Alexa {
-
-
- makeSdkRequest = (url, params) => {
-
-    return fetch(url, { method: POST_METHOD, headers: headers, body: JSON.stringify(params) })
+    return fetch(AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
         .then((res) => {
             return res.json()
         })
@@ -21,7 +17,29 @@ export default class Alexa {
         })
 }
 
- headers = {
+// module.exports.makeResutlickApicall = () => {
+
+//     return new Promise((resolve,reject) => {
+//         return fetch(AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
+//         .then((res) => {
+//             return res.json()
+//         })
+//         .then((json) => {
+//             console.log(JSON.stringify(json));  
+//             resolve(json.message)          
+//            // return json.message || json.Message
+//         })
+//         .catch(err => {
+//             console.log(err);
+//             reject("server error")
+//             //return "server error"
+//         })
+//     })
+
+   
+// }
+
+const headers = {
 
     "Accept": "application/json",
     "Token": "TDdvMFN5MndnM09pdjhEYlBBdXBSSWFhOGx2NFRIU3hZRXBjSFRqY0QxVT06SE1BQ19TSEEyNTY6",
@@ -30,7 +48,7 @@ export default class Alexa {
     "User-Agent": "iOS"
 }
 
-akvParams = {
+const akvParams = {
 
     "appId": "18d526d9-de3c-41d3-b623-d7fc47f88335",
     "mobileNetworkOperator": "Jio",
@@ -65,39 +83,5 @@ akvParams = {
     "sdkVersion": "2.0.0"
 }
 
-POST_METHOD = "POST"
-AKV_URL = "https://teamsdk.resulticks.net/home/apiKeyValidation"
-
-    apikeyvalidation()  {
-        return new Promise(function(resolve, reject) {
-            try {
-                let message = await makeSdkRequest(AKV_URL, akvParams)
-                console.log(message);
-                resolve(message)
-    
-            } catch (error) {
-                reject(error)
-            }
-        })
-        
-    }
-    
-    
-    apikeyvalidation1()  {
-        return new Promise(function(resolve, reject) {
-            try {
-                let message = makeSdkRequest(AKV_URL, akvParams)
-                console.log(message);
-                resolve(message)
-    
-            } catch (error) {
-                reject(error)
-            }
-        })
-        
-    }
-}
-
-
-
-
+const POST_METHOD = "POST"
+const AKV_URL = "https://teamsdk.resulticks.net/home/apiKeyValidation"
