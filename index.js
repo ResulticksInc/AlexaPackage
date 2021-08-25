@@ -39,6 +39,16 @@ module.exports.makeResutlickApicall = () => {
    
 // }
 
+const POST_METHOD = "POST"
+//Team
+const TEAM_AKV_URL = "https://teamsdk.resulticks.net/home/apiKeyValidation"
+const TEAM_APP_ID = "18d526d9-de3c-41d3-b623-d7fc47f88335"
+
+
+//RUN
+const RUN_AKV_URL = "https://mobis.resu.io/home/apiKeyValidation"
+const RUN_APP_ID = "6036e22e-4a43-40e1-ba90-b6000917dc45"
+
 const headers = {
 
     "Accept": "application/json",
@@ -83,12 +93,3 @@ const akvParams = {
     "sdkVersion": "2.0.0"
 }
 
-const POST_METHOD = "POST"
-//Team
-const TEAM_AKV_URL = "https://teamsdk.resulticks.net/home/apiKeyValidation"
-const TEAM_APP_ID = "18d526d9-de3c-41d3-b623-d7fc47f88335"
-
-
-//RUN
-const RUN_AKV_URL = "https://mobis.resu.io/home/sdkRegistration"
-const RUN_APP_ID = "6036e22e-4a43-40e1-ba90-b6000917dc45"
