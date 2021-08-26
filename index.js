@@ -1,43 +1,45 @@
-const express = require('express');
+
 const fetch = require('node-fetch');
+const ls = require('localStorage');
 
-module.exports.makeResutlickApicall = () => {
 
-    return fetch(RUN_AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
-        .then((res) => {
-            return res.json()
-        })
-        .then((json) => {
-            console.log(JSON.stringify(json));            
-            return json.message || json.Message
-        })
-        .catch(err => {
-            console.log(err);
-            return "server error"
-        })
-}
+// // module.exports.makeResutlickApicall = (postParam) => {
 
-// module.exports.makeResutlickApicall = () => {
+// //     return fetch(RUN_AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
+// //         .then((res) => {
+// //             return res.json()
+// //         })
+// //         .then((json) => {
+// //             console.log(JSON.stringify(json));            
+// //             return json.message || json.Message
+// //         })
+// //         .catch(err => {
+// //             console.log(err);
+// //             return "server error"
+// //         })
+// // }
 
-//     return new Promise((resolve,reject) => {
-//         return fetch(RUN_AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
-//         .then((res) => {
-//             return res.json()
-//         })
-//         .then((json) => {
-//             console.log(JSON.stringify(json));  
-//             resolve(json.message)          
-//            // return json.message || json.Message
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             reject("server error")
-//             //return "server error"
-//         })
-//     })
+// // module.exports.makeResutlickApicall = () => {
+
+// //     return new Promise((resolve,reject) => {
+// //         return fetch(RUN_AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
+// //         .then((res) => {
+// //             return res.json()
+// //         })
+// //         .then((json) => {
+// //             console.log(JSON.stringify(json));  
+// //             resolve(json.message)          
+// //            // return json.message || json.Message
+// //         })
+// //         .catch(err => {
+// //             console.log(err);
+// //             reject("server error")
+// //             //return "server error"
+// //         })
+// //     })
 
    
-// }
+// // }
 
 const POST_METHOD = "POST"
 //Team
@@ -92,4 +94,35 @@ const akvParams = {
     "currency": "NOK",
     "sdkVersion": "2.0.0"
 }
+
+class SmartDeviceSDK {
+    static appID = "";
+     static async initAPIKey(appID){
+        //localStorage.setItem("appID", appID);
+        console.log("************ STATIC *************************")
+        SmartDeviceSDK.appID = appID;
+        ls.setItem("appID", appID);
+        return fetch(RUN_AKV_URL, { method: POST_METHOD, headers: headers, body: JSON.stringify(akvParams) })
+        .then((res) => {
+            return res.json()
+        })
+        .then((json) => {
+            console.log(JSON.stringify(json));            
+            return json.message || json.Message
+        })
+        .catch(err => {
+            console.log(err);
+            return "server error"
+        })
+    }
+     static initSDK(){
+        console.log("AppId" +SmartDeviceSDK.appID);
+    }
+    static getAppID(){
+        console.log("***************LS AppID ************** \n" +ls.getItem("appID") +" ********************************");
+        return ls.getItem("appID");
+    }
+}
+
+module.exports = {SmartDeviceSDK};
 
